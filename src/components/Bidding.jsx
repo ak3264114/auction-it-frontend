@@ -3,7 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { io } from "socket.io-client";
 
+const ENDPOINT = process.env.REACT_APP_BACKEND_URL;
+var socket;
 const Bidding = () => {
 	const [item, setItem] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -83,16 +86,34 @@ const Bidding = () => {
 
 			if (data.Error) {
 				toast.error(data.Message);
+				return;
 			} else {
 				toast.success(data.Message);
+				socket.emit("bid-added", data.bid);
+				return;
 			}
 		} catch (error) {
 			console.error("Error:", error); // Handle general errors
+			return;
 		}
 	};
 	useEffect(() => {
 		fetchItemById();
 		fetchBiddingData();
+	}, [isLoggedIn]);
+	useEffect(() => {
+		socket = io(ENDPOINT);
+
+		socket.on("newBid", (bid) => {
+			console.log("call");
+			console.log(bid);
+			setBiddingData((prevData) => [...prevData, bid]);
+			return;
+		});
+
+		return () => {
+			socket.disconnect();
+		};
 	}, []);
 
 	if (loading) {
@@ -104,7 +125,7 @@ const Bidding = () => {
 	}
 
 	return (
-		<div className="flex justify-center bg-gray-700 min-h-screen">
+		<div className="flex justify-center bg-gray-700 min-h-screen pb-10">
 			<div className="max-w-lg text-white mt-5">
 				<div className="w-full min-h-[150px]">
 					<img
