@@ -4,57 +4,7 @@ import BuyNowModal from "./BuyNowModal";
 
 const Sale = () => {
 	const [buyNowModal, setBuyNowModal] = useState(false);
-	const [auctionItem, setAuctionItem] = useState([
-		{
-			id: 1,
-			name: "Punnet Super Star",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images
-		},
-		{
-			id: 2,
-			name: "Amit Star",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images: '/assets/dp.jpg', // or the correct path to the images
-		},
-		{
-			id: 3,
-			name: "Punnet Modi",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images
-		},
-		{
-			id: 4,
-			name: "Punnet Gandhi",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images
-		},
-		{
-			id: 5,
-			name: "Rahul Gandhi",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images
-		},
-		{
-			id: 6,
-			name: "Modi Gandhi",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images
-		},
-		{
-			id: 7,
-			name: "Keju Gandhi",
-			description:
-				"Here are the biggest enterprise technology acquisitions of 2021.",
-			image: "/assets/dp.jpg", // or the correct path to the images
-		},
-	]);
+	const [auctionItem, setAuctionItem] = useState();
 	console.log(buyNowModal);
 
 	console.log("buyNowModal", buyNowModal);
@@ -82,7 +32,25 @@ const Sale = () => {
 		fetchItems();
 	}, []);
 
-	return (
+	return !auctionItem ? (
+		<div className="mt-3 p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+			<div class=" shadow rounded-md p-4 max-w-sm w-full mx-auto">
+				<div class="rounded-lg bg-slate-200 h-36 w-full"></div>
+				<div class="animate-pulse flex space-x-4">
+					<div class="flex-1 space-y-6 py-1">
+						<div class="h-2 bg-slate-200 rounded"></div>
+						<div class="space-y-3">
+							<div class="grid grid-cols-3 gap-4">
+								<div class="h-2 bg-slate-200 rounded col-span-2"></div>
+								<div class="h-2 bg-slate-200 rounded col-span-1"></div>
+							</div>
+							<div class="h-2 bg-slate-200 rounded"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	) : (
 		<>
 			<div className="flex justify-center mt-5">
 				<h1 className="text-slate-900 text-3xl font-mono font-bold">Items</h1>
