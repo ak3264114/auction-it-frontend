@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LoginContext } from "../context/LoginContext";
 
 const BuyNowModal = ({ buyNowModal, setBuyNowModal }) => {
+	const { isLoggedIn } = useContext(LoginContext);
+
 	const handleClick = async () => {
+		if (!isLoggedIn) {
+			toast.info("Please Login first");
+			return;
+		}
 		try {
 			const base_url = process.env.REACT_APP_BACKEND_URL;
 

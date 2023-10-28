@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	const { isLoggedIn } = useContext(LoginContext);
@@ -55,31 +56,31 @@ const Navbar = () => {
 						{/* Desktop menu items */}
 						<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
 							<div className="flex-shrink-0 flex items-center">
-								<a href="/" className="text-white text-lg">
+								<Link to="/" className="text-white text-lg">
 									AuctionIt
-								</a>
+								</Link>
 							</div>
 							<div className="hidden sm:flex justify-between sm:ml-6 w-full">
 								<div className="flex space-x-4">
 									{/* Your navigation links */}
-									<a
-										href="/"
+									<Link
+										to="/"
 										className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 									>
 										Home
-									</a>
-									<a
-										href="/sale"
+									</Link>
+									<Link
+										to="/sale"
 										className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 									>
 										Sale
-									</a>
-									<a
-										href="/list"
+									</Link>
+									<Link
+										to="/list"
 										className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 									>
 										List
-									</a>
+									</Link>
 
 									{/* Add more navigation links as needed */}
 								</div>
@@ -89,12 +90,12 @@ const Navbar = () => {
 											<h1>{isLoggedIn.name}</h1>
 										</div>
 									) : (
-										<a
-											href="/signup"
+										<Link
+											to="/signup"
 											className="text-white hover:bg-opacity-90  px-3 py-2 bg-red-400 rounded-md text-sm font-medium"
 										>
 											Sign up
-										</a>
+										</Link>
 									)}
 								</div>
 							</div>
@@ -104,51 +105,51 @@ const Navbar = () => {
 				{/* Mobile menu, toggle classes based on menu state */}
 				<div className={`sm:hidden ${isOpen ? "block" : "hidden"}`}>
 					<div className="px-2 pt-2 pb-3 space-y-1">
-						<a
-							href="/"
+						<Link
+							to="/"
 							className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 						>
 							Home
-						</a>
-						<a
-							href="/sale"
+						</Link>
+						<Link
+							to="/sale"
 							className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 						>
 							Sale
-						</a>
-						<a
-							href="/list"
+						</Link>
+						<Link
+							to="/list"
 							className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 						>
 							List
-						</a>
+						</Link>
 
 						{isLoggedIn ? (
 							<div className="text-white hover:bg-opacity-90  px-3 py-2 bg-red-400 rounded-md text-sm font-medium">
 								<h1>{isLoggedIn.name}</h1>
 							</div>
 						) : (
-							<a
-								href="/signup"
+							<Link
+								to="/signup"
 								className="text-white hover:bg-opacity-90  px-3 py-2 bg-red-400 rounded-md text-sm font-medium"
 							>
 								Sign up
-							</a>
+							</Link>
 						)}
 					</div>
 				</div>
 			</nav>
 			{/* <div className="bg-slate-700 p-4 flex justify-between items-center">
       <div className="flex items-center space-x-4 font-semibold text-xl	">
-        <a href="/" className="text-white">
+        <Link to="/" className="text-white">
           Home
-        </a>
-        <a href="/sale" className="text-white">
+        </Link>
+        <Link to="/sale" className="text-white">
           Sale
-        </a>
-        <a href="/list" className="text-white">
+        </Link>
+        <Link to="/list" className="text-white">
           List
-        </a>
+        </Link>
       </div>
       <div className="flex items-center space-x-4">
         <BsSearch className="text-white h-7 w-7 " />

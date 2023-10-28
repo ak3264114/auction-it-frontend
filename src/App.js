@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./components/Login";
 import EmailVerification from "./components/EmailVerification";
 import LoginContextProvider from "./context/LoginContext";
+import Bidding from "./components/Bidding";
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/verify-email" element={<EmailVerification />} />
+					<Route path="/bidding/:itemId" element={<Bidding />} />
 				</Routes>
 				<ToastContainer
 					position="bottom-left"

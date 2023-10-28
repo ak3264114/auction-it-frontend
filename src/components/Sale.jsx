@@ -5,7 +5,6 @@ import BuyNowModal from "./BuyNowModal";
 const Sale = () => {
 	const [buyNowModal, setBuyNowModal] = useState(false);
 	const [auctionItem, setAuctionItem] = useState();
-	console.log(buyNowModal);
 
 	console.log("buyNowModal", buyNowModal);
 	const fetchItems = async () => {
@@ -120,6 +119,7 @@ const Sale = () => {
 						image={item.imgSrc}
 						price={item.price}
 						setBuyNowModal={setBuyNowModal}
+						qty={item.qty}
 					/>
 				))}
 			</div>

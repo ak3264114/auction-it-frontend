@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -18,7 +20,6 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
-
 		try {
 			const base_url = process.env.REACT_APP_BACKEND_URL;
 			const response = await fetch(`${base_url}/api/user/login`, {
@@ -34,6 +35,7 @@ const Login = () => {
 			if (response.ok) {
 				toast.success(data.Message);
 				localStorage.setItem("token", data.token);
+				navigate("/sale");
 			} else {
 				toast.error(data.Message);
 			}

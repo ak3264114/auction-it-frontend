@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const LoginContext = createContext();
 
 const LoginContextProvider = ({ children }) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState({ name: "Signup" });
 
 	const checkLogin = async () => {
 		if (localStorage.token) {
@@ -24,10 +24,13 @@ const LoginContextProvider = ({ children }) => {
 
 				if (response.ok) {
 					setIsLoggedIn(data.UserInfo);
-				}
+				} else setIsLoggedIn(false);
 			} catch (error) {
+				setIsLoggedIn(false);
 				console.error("Error:", error);
 			}
+		} else {
+			setIsLoggedIn(false);
 		}
 	};
 	useEffect(() => {

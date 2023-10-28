@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LoginContext } from "../context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 const List = () => {
+	const navigate = useNavigate();
 	const [itemData, setItemData] = useState({
 		imgSrc: "",
 		name: "",
@@ -13,12 +16,19 @@ const List = () => {
 
 	const { imgSrc, name, description, price, qty } = itemData;
 
+	const { isLoggedIn } = useContext(LoginContext);
+
 	const handleChange = (e) => {
 		setItemData({ ...itemData, [e.target.name]: e.target.value });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (!isLoggedIn) {
+			toast.info("Please Login first");
+			navigate("/login");
+			return;
+		}
 
 		try {
 			const base_url = process.env.REACT_APP_BACKEND_URL;
@@ -43,6 +53,15 @@ const List = () => {
 			console.error("Error:", error);
 		}
 	};
+
+	useEffect(() => {
+		if (!isLoggedIn) {
+			toast.info("Please Login first");
+			navigate("/login");
+			return;
+		}
+	}, [isLoggedIn]);
+
 	return (
 		<div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
 			<div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
