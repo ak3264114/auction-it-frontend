@@ -13,7 +13,7 @@ const Home = () => {
 						<span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
 							New
 						</span>{" "}
-						<span className="text-sm font-medium">Check the new arts now</span>
+						<span className="text-sm font-medium">Check new items</span>
 						<svg
 							className="ml-2 w-5 h-5"
 							fill="currentColor"
@@ -31,8 +31,10 @@ const Home = () => {
 						We invest in the world’s potential
 					</h1>
 					<p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-						Here at Flowbite we focus on markets where technology, innovation,
-						and capital can unlock long-term value and drive economic growth.
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
+						minima, voluptates veritatis error magnam ratione amet quos eum vero
+						magni impedit, incidunt dolorem? Iusto assumenda autem ipsam magni
+						dicta maiores.
 					</p>
 					<div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
 						<a
